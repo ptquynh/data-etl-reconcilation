@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.data.etl.reconcilation</groupId>
+  <artifactId>data-etl</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>data-etl-reconcilation</name>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <mysql.version>8.0.16</mysql.version>
+        <oracle.version>19.3</oracle.version>
+        <drill.version>1.20.2</drill.version>
+        <postgresql.version>42.2.5</postgresql.version>
+        <hadoop.version>3.2.4</hadoop.version>
+        <hive.version>3.1.2</hive.version>
+        <testng.version>7.6.1</testng.version>
+        <log4j.version>1.2.17</log4j.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
+        <junit.version>4.12</junit.version>
+        <fillo.version>1.15</fillo.version>
+        <ibatis.version>3.0</ibatis.version>
+        <maven.test.skip>true</maven.test.skip>
+		<maven-surefire-plugin.version>2.12.1</maven-surefire-plugin.version>
+  </properties>
+    
+  <dependencies>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>${oracle.version}</version>
+	    </dependency>
+	    
+	    <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        
+        <dependency>
+	    	<groupId>org.apache.hive</groupId>
+	    	<artifactId>hive-jdbc</artifactId>
+	    	<version>${hive.version}</version>
+        </dependency>
+        
+        <dependency>
+		  <groupId>com.codoid.products</groupId>
+		  <artifactId>fillo</artifactId>
+		  <version>${fillo.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.ibatis</groupId>
+		    <artifactId>ibatis-core</artifactId>
+		    <version>${ibatis.version}</version>
+	    </dependency>
+        
+        <dependency>
+		   <groupId>org.apache.drill.exec</groupId>
+		   <artifactId>drill-jdbc-all</artifactId>
+		   <version>${drill.version}</version>
+		</dependency>
+        
+        <dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>${testng.version}</version>
+		    <scope>test</scope>
+		</dependency>
+
+        
+        <dependency>
+	        <groupId>log4j</groupId>
+	        <artifactId>log4j</artifactId>
+	        <version>${log4j.version}</version>
+        </dependency>
+        
+	    <dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>apache-log4j-extras</artifactId>
+		    <version>${log4j.version}</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>org.apache.zookeeper</groupId>
+	        <artifactId>zookeeper</artifactId>
+	        <version>${zookeeper.version}</version>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.apache.hadoop</groupId>
+		    <artifactId>hadoop-common</artifactId>
+		    <version>${hadoop.version}</version>
+       </dependency>
+       
+       <dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+	    <dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+   </dependencies>
+</project>

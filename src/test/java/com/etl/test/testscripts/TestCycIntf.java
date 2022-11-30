@@ -1,9 +1,8 @@
 package com.etl.test.testscripts;
 import org.testng.annotations.Test;
 import com.etl.common.database.DatabaseUtils;
-import com.etl.test.testconfig.TestConfig;
-
 import java.util.List;
+import com.etl.test.testconfig.TestConfig;
 import java.sql.SQLException;
 import com.etl.common.Utils;
 
@@ -16,7 +15,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_01
 		* Test case name:[CYC_INTF] Verify Target Schema table
-		* Precondition:[CYC_INTF] Verify Target Schema table
+		* Test Description:Check target schema table and data type columns target
+		* Precondition:
 		* Priority:1
 		* Labels:Metadata
 		* SourceDB: RATING_OWNER
@@ -38,7 +38,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_02
 		* Test case name:[CYC_INTF] Check Record Counts
-		* Precondition:[CYC_INTF] Check Record Counts
+		* Test Description:filter condition source table: No filter
+		* Precondition:
 		* Priority:1
 		* Labels:Record Counts
 		* SourceDB: RATING_OWNER
@@ -60,7 +61,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_03
 		* Test case name:[CYC_INTF][UNQ_ID_IN_SRC_STM] Check Validate Values
-		* Precondition:[CYC_INTF][UNQ_ID_IN_SRC_STM] Check Validate Values
+		* Test Description:Mapping rule by: DIRECT
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -82,7 +84,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_04
 		* Test case name:[CYC_INTF][CYC_CODE] Check Validate Values
-		* Precondition:[CYC_INTF][CYC_CODE] Check Validate Values
+		* Test Description:Mapping rule by: DIRECT
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -104,7 +107,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_05
 		* Test case name:[CYC_INTF][CYC_NM] Check Validate Values
-		* Precondition:[CYC_INTF][CYC_NM] Check Validate Values
+		* Test Description:Mapping rule by: DIRECT
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -126,7 +130,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_06
 		* Test case name:[CYC_INTF][CYC_STT] Check Validate Values
-		* Precondition:[CYC_INTF][CYC_STT] Check Validate Values
+		* Test Description:Mapping rule by: DIRECT
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -148,7 +153,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_07
 		* Test case name:[CYC_INTF][SRC_STM_CODE] Check Validate Values
-		* Precondition:[CYC_INTF][SRC_STM_CODE] Check Validate Values
+		* Test Description:Mapping rule by: FIX value 'TEAM'
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -170,7 +176,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_08
 		* Test case name:[CYC_INTF][SRC_STM_NM] Check Validate Values
-		* Precondition:[CYC_INTF][SRC_STM_NM] Check Validate Values
+		* Test Description:Mapping rule by: FIX value 'CALL TEAM'
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -192,7 +199,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_09
 		* Test case name:[CYC_INTF][PCS_DT] Check Validate Values
-		* Precondition:[CYC_INTF][PCS_DT] Check Validate Values
+		* Test Description:Mapping rule by: FIX value ETL_DATE
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -214,7 +222,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_10
 		* Test case name:[CYC_INTF][CRN_ROW_IND] Check Validate Values
-		* Precondition:[CYC_INTF][CRN_ROW_IND] Check Validate Values
+		* Test Description:Mapping rule by: FIX value 1
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -236,7 +245,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_11
 		* Test case name:[CYC_INTF][EFF_FM_TMS] Check Validate Values
-		* Precondition:[CYC_INTF][EFF_FM_TMS] Check Validate Values
+		* Test Description:Mapping rule by: FIX value SYS_DATE
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -258,7 +268,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_12
 		* Test case name:[CYC_INTF][EFF_TO_TMS] Check Validate Values
-		* Precondition:[CYC_INTF][EFF_TO_TMS] Check Validate Values
+		* Test Description:Mapping rule by: FIX value '2400-01-01 23:59:59'
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -280,7 +291,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_13
 		* Test case name:[CYC_INTF][] Check Uniqueness
-		* Precondition:[CYC_INTF][] Check Uniqueness
+		* Test Description:Field UNQ_ID_IN_SRC_STM ||'-'|| EFF_FM_TMS data is uniqueness
+		* Precondition:
 		* Priority:2
 		* Labels:Uniqueness
 		* SourceDB: RATING_OWNER
@@ -302,7 +314,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_14
 		* Test case name:[CYC_INTF][CYC_ANCHOR_ID] Check Uniqueness
-		* Precondition:[CYC_INTF][CYC_ANCHOR_ID] Check Uniqueness
+		* Test Description:Field CYC_ANCHOR_ID data is uniqueness
+		* Precondition:
 		* Priority:2
 		* Labels:Uniqueness
 		* SourceDB: RATING_OWNER
@@ -324,7 +337,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_15
 		* Test case name:[CYC_INTF][UNQ_ID_IN_SRC_STM] Check Completeness
-		* Precondition:[CYC_INTF][UNQ_ID_IN_SRC_STM] Check Completeness
+		* Test Description:Field UNQ_ID_IN_SRC_STM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -346,7 +360,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_16
 		* Test case name:[CYC_INTF][PCS_DT] Check Completeness
-		* Precondition:[CYC_INTF][PCS_DT] Check Completeness
+		* Test Description:Field PCS_DT data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -368,7 +383,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_17
 		* Test case name:[CYC_INTF][PPN_TMS] Check Completeness
-		* Precondition:[CYC_INTF][PPN_TMS] Check Completeness
+		* Test Description:Field PPN_TMS data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -390,7 +406,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_18
 		* Test case name:[CYC_INTF][SRC_STM_CODE] Check Completeness
-		* Precondition:[CYC_INTF][SRC_STM_CODE] Check Completeness
+		* Test Description:Field SRC_STM_CODE data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -412,7 +429,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_19
 		* Test case name:[CYC_INTF][SRC_STM_NM] Check Completeness
-		* Precondition:[CYC_INTF][SRC_STM_NM] Check Completeness
+		* Test Description:Field SRC_STM_NM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -434,7 +452,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_20
 		* Test case name:[CYC_INTF][CYC_ANCHOR_ID] Check Completeness
-		* Precondition:[CYC_INTF][CYC_ANCHOR_ID] Check Completeness
+		* Test Description:Field SRC_STM_NM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -456,7 +475,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_21
 		* Test case name:[CYC_INTF][CRN_ROW_IND] Check Completeness
-		* Precondition:[CYC_INTF][CRN_ROW_IND] Check Completeness
+		* Test Description:Field SRC_STM_NM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -478,7 +498,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_22
 		* Test case name:[CYC_INTF][EFF_FM_TMS] Check Completeness
-		* Precondition:[CYC_INTF][EFF_FM_TMS] Check Completeness
+		* Test Description:Field SRC_STM_NM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -500,7 +521,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_23
 		* Test case name:[CYC_INTF][EFF_TO_TMS] Check Completeness
-		* Precondition:[CYC_INTF][EFF_TO_TMS] Check Completeness
+		* Test Description:Field SRC_STM_NM data is not null
+		* Precondition:
 		* Priority:2
 		* Labels:Completeness
 		* SourceDB: RATING_OWNER
@@ -522,7 +544,9 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_24
 		* Test case name:[CYC_INTF][SRC_STM_CODE] Check Validity
-		* Precondition:[CYC_INTF][SRC_STM_CODE] Check Validity
+		* Test Description:Field SRC_STM_CODE  
+only 1 value is 'CYCLE'
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -544,7 +568,9 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_25
 		* Test case name:[CYC_INTF][SRC_STM_NM] Check Validity
-		* Precondition:[CYC_INTF][SRC_STM_NM] Check Validity
+		* Test Description:Field SRC_STM_NM  
+only 1 value is 'CLOSED_CYCLE'
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -566,7 +592,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_26
 		* Test case name:[CYC_INTF][CRN_ROW_IND] Check Validity
-		* Precondition:[CYC_INTF][CRN_ROW_IND] Check Validity
+		* Test Description:Field CRN_ROW_IND in (0,1)
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -588,7 +615,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_27
 		* Test case name:[CYC_INTF][] Check Validity
-		* Precondition:[CYC_INTF][] Check Validity
+		* Test Description:For records with EFF_TO_TMS = '2400-01-01 23:59:59', field CRN_ROW_IND must be equal to 1
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -610,7 +638,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_28
 		* Test case name:[CYC_INTF][] Check value
-		* Precondition:[CYC_INTF][] Check value
+		* Test Description:EFF_TO_TMS of previous record = EFF_FM_TMS of following record
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -632,7 +661,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_29
 		* Test case name:[CYC_INTF][] Check validity
-		* Precondition:[CYC_INTF][] Check validity
+		* Test Description:At 1 record: EFF_FM_TMS>= EFF_TO_TMS
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -654,7 +684,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_30
 		* Test case name:[CYC_INTF] [PCS_DT ] Check value
-		* Precondition:[CYC_INTF] [PCS_DT ] Check value
+		* Test Description:Field PCS_DT is less than or equal to current date
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -676,7 +707,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_31
 		* Test case name:[CYC_INTF] [PCS_DT ] Check format
-		* Precondition:[CYC_INTF] [PCS_DT ] Check format
+		* Test Description:Field PCS_DT is like format YYYY-MM-DD
+		* Precondition:
 		* Priority:2
 		* Labels:Validity
 		* SourceDB: RATING_OWNER
@@ -698,7 +730,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_32
 		* Test case name:[CYC_INTF][CYC_CODE] Update record data
-		* Precondition:[CYC_INTF][CYC_CODE] Update record data
+		* Test Description:Update data record, field CYC_CODE
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -720,7 +753,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_33
 		* Test case name:[CYC_INTF][CYC_NM] Update record data
-		* Precondition:[CYC_INTF][CYC_NM] Update record data
+		* Test Description:Update data record, field CYC_NM
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -742,7 +776,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_34
 		* Test case name:[CYC_INTF][CYC_STT] Update record data
-		* Precondition:[CYC_INTF][CYC_STT] Update record data
+		* Test Description:Update data record, field CYC_STT
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -764,7 +799,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_35
 		* Test case name:[CYC_INTF][PCS_DT] Update record data
-		* Precondition:[CYC_INTF][PCS_DT] Update record data
+		* Test Description:Update data record, field PCS_DT
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -786,7 +822,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_36
 		* Test case name:[CYC_INTF][CRN_ROW_IND] Update record data
-		* Precondition:[CYC_INTF][CRN_ROW_IND] Update record data
+		* Test Description:Update data record, field CRN_ROW_IND
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -808,7 +845,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_37
 		* Test case name:[CYC_INTF][EFF_FM_TMS] Update record data
-		* Precondition:[CYC_INTF][EFF_FM_TMS] Update record data
+		* Test Description:Update data record, field EFF_FM_TMS
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -830,7 +868,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_38
 		* Test case name:[CYC_INTF][EFF_TO_TMS] Update record data
-		* Precondition:[CYC_INTF][EFF_TO_TMS] Update record data
+		* Test Description:Update data record, field EFF_TO_TMS
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -852,7 +891,8 @@ public class TestCycIntf extends TestConfig {
 		/**
 		* Test case ID:CYCINTF_39
 		* Test case name:["CYC_INTF"] Delete record data
-		* Precondition:["CYC_INTF"] Delete record data
+		* Test Description:Delete record data
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -875,7 +915,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_40
 		* Test case name:[CYC_INTF] [UNQ_ID_IN_SRC_STM] Add new record data
-		* Precondition:[CYC_INTF] [UNQ_ID_IN_SRC_STM] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -897,7 +938,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_41
 		* Test case name:[CYC_INTF] [CYC_CODE] Add new record data
-		* Precondition:[CYC_INTF] [CYC_CODE] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:2
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -919,7 +961,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_42
 		* Test case name:[CYC_INTF] [CYC_NM] Add new record data
-		* Precondition:[CYC_INTF] [CYC_NM] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -941,7 +984,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_43
 		* Test case name:[CYC_INTF] [CYC_STT] Add new record data
-		* Precondition:[CYC_INTF] [CYC_STT] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -963,7 +1007,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_44
 		* Test case name:[CYC_INTF] [SRC_STM_CODE] Add new record data
-		* Precondition:[CYC_INTF] [SRC_STM_CODE] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -985,7 +1030,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_45
 		* Test case name:[CYC_INTF] [SRC_STM_NM] Add new record data
-		* Precondition:[CYC_INTF] [SRC_STM_NM] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -1007,7 +1053,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_46
 		* Test case name:[CYC_INTF] [PCS_DT] Add new record data
-		* Precondition:[CYC_INTF] [PCS_DT] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -1029,7 +1076,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_47
 		* Test case name:[CYC_INTF] [CRN_ROW_IND] Add new record data
-		* Precondition:[CYC_INTF] [CRN_ROW_IND] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -1051,7 +1099,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_48
 		* Test case name:[CYC_INTF] [EFF_FM_TMS] Add new record data
-		* Precondition:[CYC_INTF] [EFF_FM_TMS] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER
@@ -1073,7 +1122,8 @@ Update fields: CYC_CODE, CYC_NM, CYC_STT to null
 		/**
 		* Test case ID:CYCINTF_49
 		* Test case name:[CYC_INTF] [EFF_TO_TMS] Add new record data
-		* Precondition:[CYC_INTF] [EFF_TO_TMS] Add new record data
+		* Test Description:Add new data record
+		* Precondition:
 		* Priority:1
 		* Labels:Validate Values
 		* SourceDB: RATING_OWNER

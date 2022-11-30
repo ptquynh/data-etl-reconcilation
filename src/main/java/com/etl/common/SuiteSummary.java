@@ -93,6 +93,15 @@ public class SuiteSummary {
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
+	
+	public long getMilis() {
+		long milis=startDate.getTime()-endDate.getTime();
+		return milis;
+	}
+	
+	public double getMinus() {
+		return (startDate.getTime()-endDate.getTime())/1000/ 60;
+	}
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;

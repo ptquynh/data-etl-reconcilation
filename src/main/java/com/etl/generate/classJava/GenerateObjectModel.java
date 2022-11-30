@@ -24,7 +24,7 @@ public class GenerateObjectModel {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
-		String packageName = "com.data.common.tables";
+		String packageName = "com.etl.common.tables";
 		//Connect to Oracle db and get columns and data type list
 		Connection conn = DBConn.oracleDB();
 		

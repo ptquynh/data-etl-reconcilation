@@ -26,7 +26,7 @@ public class GenerateTestScriptClass {
 		String excelFile = Utils.getFilePath("input-excel-file/test-cases/VETC-OPS-CYC_INTF.xlsx");
 		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,0);
 		List<TestCaseModel> testcases= mapper.map(TestCaseModel.class);
-		String packageName = "com.data.test.testscripts";
+		String packageName = "com.etl.test.testscripts";
 		String sheetName=mapper.getSheetName(0);
 		String clsName="Test"+upperCase(sheetName.toLowerCase()).replace("_","");
 		String testConfigName="TestConfig";
@@ -40,6 +40,7 @@ public class GenerateTestScriptClass {
             
             String testID=testcase.getTestID();
             String testTitle=testcase.getSummary();
+            String testDescription=testcase.getDescription();
             String testPrecondition=testcase.getPrecondition();
             String testPriority=testcase.getPriority();
             String testComponent=testcase.getComponents();
@@ -51,7 +52,7 @@ public class GenerateTestScriptClass {
             String targetQuery=testcase.getTargetQuery().replace("\n"," ").replace("\\d","\\\\d");
             String expectedResults=testcase.getExpectedResult();
             
-            genTestScript(testID,testTitle,testPrecondition,testPriority,labels,testComponent,steps,sourceDB,
+            genTestScript(testID,testTitle,testDescription,testPrecondition,testPriority,labels,testComponent,steps,sourceDB,
             		targetDB,sourceQuery,targetQuery,expectedResults,out);
         }
 		
@@ -78,7 +79,7 @@ public class GenerateTestScriptClass {
 	 * @param out
 	 * @throws IOException
 	 */
-	public static void genTestScript(String testID,String testTitle,String testPrecondition,String testPriority,
+	public static void genTestScript(String testID,String testTitle,String testDescription,String testPrecondition,String testPriority,
 			String labels,String testComponent,String steps,String sourceDB,String targetDB,String sourceQuery,
 			String targetQuery,String expectedResults,PrintWriter out) throws IOException {
 		    if(testPriority.contentEquals("High")) testPriority="1";
@@ -98,7 +99,8 @@ public class GenerateTestScriptClass {
 		        out.append("\t\t/**\n");
 				out.append("\t\t* Test case ID:"+testID+"\n");
 				out.append("\t\t* Test case name:"+ testTitle + "\n");
-				out.append("\t\t* Precondition:"+ testTitle + "\n");
+				out.append("\t\t* Test Description:"+ testDescription + "\n");
+				out.append("\t\t* Precondition:"+ testPrecondition + "\n");
 				out.append("\t\t* Priority:"+ testPriority + "\n");
 				out.append("\t\t* Labels:"+ labels + "\n");
 				out.append("\t\t* SourceDB: "+sourceDB+"\n");
@@ -166,11 +168,11 @@ public class GenerateTestScriptClass {
 		System.out.println("generating class..");
 		out.println("package " + packageName + ";");
 		out.println("import org.testng.annotations.Test;");
-		out.println("import com.data.common.database.DatabaseUtils;");
+		out.println("import com.etl.common.database.DatabaseUtils;");
 		out.println("import java.util.List;");
-		out.println("import com.data.test.testconfig.TestConfig;");
+		out.println("import com.etl.test.testconfig.TestConfig;");
 		out.println("import java.sql.SQLException;");
-		out.println("import com.data.common.Utils;");
+		out.println("import com.etl.common.Utils;");
 		out.append("\n\n");
 		out.println("public class " + clsName + " extends TestConfig {");
 		return out;

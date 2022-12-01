@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import com.etl.common.ExcelToObjectMapper;
-import com.etl.common.TestBase;
 import com.etl.common.Utils;
 import com.etl.common.database.DatabaseUtils;
 import com.etl.common.database.DatabaseUtils.DbTypes;
@@ -19,12 +18,19 @@ public class GenerateTestDataForLocalDb {
 		System.out.println("----------------------------");
 		//Init setup
 		//Connect to Local database
-		Connection conn = DBConn.postgreSqlDBLocal();
-		PreparedStatement prestmt = DatabaseUtils.genInsertSQLStatement("book", conn,DbTypes.POSTGRESQL);
+		String dbUrl=args[0];
+		String dbUser=args[1];
+		String dbPass=args[2];
+		DbTypes dbType=DbTypes.valueOf(args[3]);
+		String tbName=args[4];
+		String inputExcel=args[5];
+		String outputExcel=args[6];
+		Connection conn = DBConn.connectDB(dbUrl,dbUser,dbPass,dbType);
+		PreparedStatement prestmt = DatabaseUtils.genInsertSQLStatement(tbName, conn,dbType);
 		
 		//Get the path of sql & Excel file		
-		String excelFile = Utils.getFilePath(TestBase.INPUT_EXCEL_PATH_BOOK);
-		String sqlFile = Utils.getFilePath(TestBase.OUPUT_SQL_PATH_BOOK);
+		String excelFile = Utils.getFilePath(inputExcel);
+		String sqlFile = Utils.getFilePath(outputExcel);
 		
 		//Generate insert Sql for Book table
 		sqlStatementBookTb(excelFile,sqlFile,prestmt);

@@ -1,5 +1,7 @@
 git
-test-output/.*
+/test-output
 .classpath
 .project
 /.settings
+/target/maven-status
+/target/surefire-reports

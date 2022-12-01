@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="testDemo">
-  <test name="Test">
-    <classes>
-      <class name="com.etl.test.testconfig.TestDemoConfig"/>
-      <class name="com.etl.test.testscripts.testDemo"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->

@@ -9,8 +9,6 @@ import java.util.List;
 import com.etl.common.ExcelToObjectMapper;
 import com.etl.common.TestCaseModel;
 import com.etl.common.Utils;
-
-
 import static com.etl.common.TestLogger.info;
 
 public class GenerateTestScriptClass {
@@ -23,13 +21,15 @@ public class GenerateTestScriptClass {
 	public static void main(String[] args) throws Exception {
 		
 		//Set parameters of the class
-		String excelFile = Utils.getFilePath("input-excel-file/test-cases/VETC-OPS-CYC_INTF.xlsx");
+		String excelFile=args[0];
+		String indexSheet=args[1];
+		String testConfigName=args[2];
+		
 		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,0);
 		List<TestCaseModel> testcases= mapper.map(TestCaseModel.class);
 		String packageName = "com.etl.test.testscripts";
-		String sheetName=mapper.getSheetName(0);
+		String sheetName=mapper.getSheetName(Integer.valueOf(indexSheet));
 		String clsName="Test"+upperCase(sheetName.toLowerCase()).replace("_","");
-		String testConfigName="TestConfig";
 		
 		//Generate header information of the class
 		PrintWriter out= writerHeaderClass(packageName,clsName,testConfigName);

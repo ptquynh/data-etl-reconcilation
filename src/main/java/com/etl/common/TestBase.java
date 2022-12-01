@@ -77,6 +77,18 @@ public class TestBase {
 	public static final String SQL_META_MYSQL = "SELECT * FROM information_schema.columns WHERE table_name = ? order by ordinal_position";
 	public static final String SQL_META_MMSQL = "SELECT * FROM information_schema.columns WHERE table_name = ? order by ordinal_position";
 	public static final String SQL_META_HIVE = "describe ?";
+	
+	
+	//Email information
+	public final static String EMAIL_FROM = "qateam.data@gmail.com";
+	public final static String EMAIL_PASS ="ggpkczxwvxzuostr";
+	public final static String EMAIL_TO="quynhpt@carpla.vn";
+	
+	
+	//Test Report information
+	public final static String TEST_REPORT_FILE_NAME = "test-summary-report.html";
+	public final static String TEST_REPORT_TITLE= "Test Summary Report";
+	public final static String TEST_REPORT_PATH= "/test-output/"+TEST_REPORT_FILE_NAME;
 
 	/**
 	 * Get System Property

@@ -80,8 +80,21 @@ public class DBConn{
 	public static Connection oracleDB() throws ClassNotFoundException, SQLException {
 		return dbConn(TestBase.DB_URL_ORACLE,
 				TestBase.USER_ORACLE, 
-				TestBase.USER_ORACLE,
+				TestBase.PASS_ORACLE,
 				DbTypes.ORACLE);
+	}
+	/**
+	 * Connect to a JDBC Database
+	 * @param dburl
+	 * @param dbuser
+	 * @param dbpass
+	 * @param dbtype
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public static Connection connectDB(String dburl,String dbuser,String dbpass, DbTypes dbtype) throws ClassNotFoundException, SQLException {
+		return dbConn(dburl,dbuser,dbpass,dbtype);
 	}
 
 

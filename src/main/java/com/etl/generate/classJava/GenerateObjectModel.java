@@ -25,14 +25,17 @@ public class GenerateObjectModel {
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 		String packageName = "com.etl.common.tables";
-		//Connect to Oracle db and get columns and data type list
-		Connection conn = DBConn.oracleDB();
+		//Connect to db and get columns and data type list
+		String dbUrl=args[0];
+		String dbUser=args[1];
+		String dbPass=args[2];
+		DbTypes dbType=DbTypes.valueOf(args[3]);
+		String tbName=args[4];
+		Connection conn = DBConn.connectDB(dbUrl,dbUser,dbPass,dbType);
 		
-		//Generate ClosedCycle table in Oracle
-		String tbName="CLOSED_CYCLE";
 		String clsName=upperCase(tbName.toLowerCase()).replace("_","");
-		List<Object> colList=DatabaseUtils.getColumnsMeta(tbName,"COLUMN_NAME",conn,DbTypes.ORACLE);
-		List<Object> dataTypeList=DatabaseUtils.getColumnsMeta(tbName,"DATA_TYPE",conn,DbTypes.ORACLE);
+		List<Object> colList=DatabaseUtils.getColumnsMeta(tbName,"COLUMN_NAME",conn,dbType);
+		List<Object> dataTypeList=DatabaseUtils.getColumnsMeta(tbName,"DATA_TYPE",conn,dbType);
 		
 		genObjectModel(packageName,clsName,colList,dataTypeList);
 		

@@ -18,13 +18,13 @@ import org.testng.ITestContext;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
+
+import com.etl.common.TestBase;
 import com.etl.common.Utils;
 
 public class CustomReporter implements IReporter{
 
 	private FileWriter writer;
-	private String reportFileName = "test-summary-report.html";
-	private String reportTitle= "Test Summary Report";
 	private String pathReport;
 	private long totalMilis=0;
 	private double totalMinutes=0;
@@ -39,7 +39,7 @@ public class CustomReporter implements IReporter{
 
 		try {
             
-			pathReport = Utils.getAbsolutePath("/test-output/"+reportFileName);
+			pathReport = Utils.getAbsolutePath(TestBase.TEST_REPORT_PATH);
 			Utils.deleteFile(pathReport);
 			System.out.print("pathReport:"+pathReport);
 			writer = createWriter(pathReport);
@@ -68,7 +68,7 @@ public class CustomReporter implements IReporter{
 				+ "</head>"
 				+ "<body>");
 		out.write("<center><h1>");
-		out.write("<font color=#43A047>"+reportTitle +" - "+getDateAsString()+"</font>");
+		out.write("<font color=#43A047>"+TestBase.TEST_REPORT_TITLE +" - "+getDateAsString()+"</font>");
 		out.write("</h1></center>");
 	}
 
@@ -277,7 +277,7 @@ public class CustomReporter implements IReporter{
 					out.write("</tr>");
 				}
 				
-				IResultMap skippedTest = tc.getFailedTests();
+				IResultMap skippedTest = tc.getSkippedTests();
 				Collection<ITestNGMethod> skippedMethods = skippedTest.getAllMethods();
 				
 				for(ITestNGMethod md : skippedMethods){

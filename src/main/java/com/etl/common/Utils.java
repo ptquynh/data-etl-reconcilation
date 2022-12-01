@@ -33,7 +33,7 @@ public class Utils {
 	 * @param format
 	 * @return current Date of system
 	 */
-	public String getCurrentDate(String format){
+	public static String getCurrentDate(String format){
 		DateFormat dateFormat = new SimpleDateFormat(format);
 		Date date = new Date();
 		return (dateFormat.format(date)); 

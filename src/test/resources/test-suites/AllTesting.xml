@@ -4,8 +4,6 @@
         <listener class-name="com.etl.testReport.CustomReporter" />
   </listeners>
   <suite-files>
-    <suite-file path="Testing2.xml" />
-    <suite-file path="Testing.xml" />
     <suite-file path="TestSuiteCycIntf.xml" />
   </suite-files>
 </suite>

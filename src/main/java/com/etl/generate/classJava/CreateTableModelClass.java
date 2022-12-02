@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.etl.common.Utils;
+import com.etl.common.database.DBConn;
 import com.etl.common.database.DatabaseUtils;
 import com.etl.common.database.DatabaseUtils.DbTypes;
-import com.etl.common.datasource.DBConn;
 
 public class CreateTableModelClass {
 

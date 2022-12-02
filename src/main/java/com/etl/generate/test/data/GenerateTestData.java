@@ -1,4 +1,4 @@
-package com.etl.execute.sqlFileStatements;
+package com.etl.generate.test.data;
 
 import java.io.FileWriter;
 import java.sql.Connection;
@@ -7,9 +7,9 @@ import java.util.List;
 
 import com.etl.common.ExcelToObjectMapper;
 import com.etl.common.Utils;
+import com.etl.common.database.DBConn;
 import com.etl.common.database.DatabaseUtils;
 import com.etl.common.database.DatabaseUtils.DbTypes;
-import com.etl.common.datasource.DBConn;
 import com.etl.common.tables.Book;
 
 public class GenerateTestData {
@@ -33,7 +33,7 @@ public class GenerateTestData {
 		String sqlFile = Utils.getFilePath(outputExcel);
 		
 		//Generate insert Sql for Book table
-		sqlStatementBookTb(excelFile,sqlFile,prestmt);
+		genSqlStatementBookTable(excelFile,sqlFile,prestmt);
 		//Execute insert Sql file
 		DatabaseUtils.excuteSqlScript(sqlFile, conn);
 		
@@ -48,7 +48,7 @@ public class GenerateTestData {
 	 * @param sqlFile
 	 * @throws Exception
 	 */
-	public static void sqlStatementBookTb(String excelFile,String sqlFile,PreparedStatement prestmt) throws Exception {
+	public static void genSqlStatementBookTable(String excelFile,String sqlFile,PreparedStatement prestmt) throws Exception {
 		//Get data from Object class to List
 		//Convert Excel file to Object class
 		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,0);

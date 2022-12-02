@@ -1,4 +1,4 @@
-package com.etl.common.datasource;
+package com.etl.common.database;
 
 import static com.etl.common.TestLogger.info;
 
@@ -44,44 +44,6 @@ public class DBConn{
 			break;
 		}
 		return DriverManager.getConnection(url,user,pass);
-	}
-	/**
-	 * Create connection to Postgresql localhost
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public static Connection postgreSqlDBLocal() throws ClassNotFoundException, SQLException {
-		return dbConn(TestBase.DB_URL_POSTGRESQL_LOCAL,
-				TestBase.USER_POSTGRESQL_LOCAL, 
-				TestBase.PASS_POSTGRESQL_LOCAL,
-				DbTypes.POSTGRESQL);
-	}
-
-	/**
-	 * Create connection to Postgresql of vetc call
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public static Connection postgreSqlDBVetcCall() throws ClassNotFoundException, SQLException {
-		return dbConn(TestBase.DB_URL_POSTGRESQL_VETCCALL,
-				TestBase.USER_POSTGRESQL_VETCCALL, 
-				TestBase.PASS_POSTGRESQL_VETCCALL,
-				DbTypes.POSTGRESQL);
-	}
-
-	/**
-	 * Create connection to Postgresql of vetc call
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public static Connection oracleDB() throws ClassNotFoundException, SQLException {
-		return dbConn(TestBase.DB_URL_ORACLE,
-				TestBase.USER_ORACLE, 
-				TestBase.PASS_ORACLE,
-				DbTypes.ORACLE);
 	}
 	/**
 	 * Connect to a JDBC Database

@@ -250,6 +250,14 @@
 						<version>${exec.maven.plugin.version}</version>
 						<configuration>
 							<mainClass>com.etl.common.email.SendEmail</mainClass>
+							<arguments>
+							    <!--setup email address which will send Test Report-->
+								<argument>qateam.data@gmail.com</argument>
+								<!--setup email password when login Window OS-->
+								<argument>ggpkczxwvxzuostr</argument>
+								<!--setup email address which will be received Test Report-->
+								<argument>quynhpt@carpla.vn</argument>
+							</arguments>
 						</configuration>
 					</plugin>
 				</plugins>

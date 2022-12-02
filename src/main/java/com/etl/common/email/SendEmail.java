@@ -27,12 +27,15 @@ public class SendEmail {
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.googlemail.com";
-
+        String email_from=args[0];
+        String email_pass=args[1];
+        String email_to=args[2];
+        
         Properties props = System.getProperties();
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", TestBase.EMAIL_FROM);
-        props.put("mail.smtp.password", TestBase.EMAIL_PASS);
+        props.put("mail.smtp.user", email_from);
+        props.put("mail.smtp.password",email_pass);
         props.put("mail.smtp.port", "465");
         props.put("mail.smtp.ssl.enable", "true");
         props.put("mail.smtp.auth", "true");
@@ -44,7 +47,7 @@ public class SendEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication(TestBase.EMAIL_FROM,TestBase.EMAIL_PASS);
+                return new PasswordAuthentication(email_from,email_pass);
 
             }
 
@@ -55,10 +58,11 @@ public class SendEmail {
             MimeMessage message = new MimeMessage(session);
 
             // Set From: header field of the header.
-            message.setFrom(new InternetAddress(TestBase.EMAIL_FROM));
+            message.setFrom(new InternetAddress(email_from));
 
+           
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(TestBase.EMAIL_TO));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email_to));
 
             // Set Subject: header field
             message.setSubject("[QA][Data] Test Report " +Utils.getCurrentDate("dd/MM/yyyy hh:mm:ss"));

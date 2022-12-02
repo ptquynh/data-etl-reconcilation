@@ -4,8 +4,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
+import com.etl.common.database.DBConn;
 import com.etl.common.database.DatabaseUtils.DbTypes;
-import com.etl.common.datasource.DBConn;
 
 import static com.etl.common.TestLogger.info;
 

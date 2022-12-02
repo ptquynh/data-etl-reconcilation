@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import com.etl.common.TestBase;
-import com.etl.common.datasource.DBConn;
 
 import static com.etl.common.TestLogger.info;
 

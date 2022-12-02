@@ -23,7 +23,7 @@ public class CreateTestScriptClass {
 		//Set parameters of the class
 		String excelFile=args[0];
 		String indexSheet=args[1];
-		String testConfigName=args[2];
+		String testConfigName="TestConfig";
 		
 		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,0);
 		List<TestCaseModel> testcases= mapper.map(TestCaseModel.class);

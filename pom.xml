@@ -22,6 +22,19 @@
 		<ibatis.version>3.0</ibatis.version>
 		<exec.maven.plugin.version>3.0.0</exec.maven.plugin.version>
 		<maven-surefire-plugin.version>2.12.1</maven-surefire-plugin.version>
+
+		<!-- Database Information -->
+		<oracle.DBType>ORACLE</oracle.DBType>
+		<postgresql.DBType>POSTGRESQL</postgresql.DBType>
+
+		<oracle.DBUrl.orcl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</oracle.DBUrl.orcl>
+		<oracle.DBUser.orcl>rating_owner</oracle.DBUser.orcl>
+		<oracle.DBPass.orcl>rating_owner</oracle.DBPass.orcl>
+
+		<postgresql.DBUrl.postgres>dbc:postgresql://localhost:5432/postgres</postgresql.DBUrl.postgres>
+		<postgresql.DBUser.postgres>rating_owner</postgresql.DBUser.postgres>
+		<postgresql.DBPass.postgres>rating_owner</postgresql.DBPass.postgres>
+
 	</properties>
 
 	<dependencies>
@@ -122,10 +135,10 @@
 							<!--Generate CLOSED_CYCLE Table Class Model-->
 							<mainClass>com.etl.generate.classJava.CreateTableModelClass</mainClass>
 							<arguments>
-								<argument>jdbc:oracle:thin:@10.0.9.226:1521:orcl</argument>
-								<argument>rating_owner</argument>
-								<argument>rating_owner</argument>
-								<argument>ORACLE</argument>
+								<argument>${oracle.DBUrl.orcl}</argument>
+								<argument>${oracle.DBUser.orcl}</argument>
+								<argument>${oracle.DBPass.orcl}</argument>
+								<argument>${oracle.DBType}</argument>
 								<argument>CLOSED_CYCLE</argument>
 							</arguments>
 						</configuration>
@@ -146,12 +159,16 @@
 							<!--INSERT DATA FOR BOOK Table-->
 							<mainClass>com.etl.execute.sqlFileStatements.GenerateTestData</mainClass>
 							<arguments>
-								<argument>dbc:postgresql://localhost:5432/postgres</argument>
-								<argument>postgres</argument>
-								<argument>123456789</argument>
-								<argument>POSTGRESQL</argument>
+							<!--setup database connection to get table schema-->
+								<argument>${postgresql.DBUrl.postgres}</argument>
+								<argument>${postgresql.DBUser.postgres}</argument>
+								<argument>${postgresql.DBPass.postgres}</argument>
+								<argument>${postgresql.DBType}</argument>
+								<!--setup table name where you want to insert test data into-->
 								<argument>book</argument>
+								<!--setup the excel file where you store test data-->
 								<argument>input-excel-file/book.xlsx</argument>
+								<!--setup the sql file where you want to save insert sql query-->
 								<argument>output-sql-file/book.sql</argument>
 							</arguments>
 						</configuration>
@@ -169,12 +186,13 @@
 						<artifactId>exec-maven-plugin</artifactId>
 						<version>${exec.maven.plugin.version}</version>
 						<configuration>
-							<!--CREATE TEST SCIPT FOR CYC_INTF TABLE-->
+							<!--CREATE TEST SCRIPT FOR CYC_INTF TABLE-->
 							<mainClass>com.etl.generate.classJava.CreateTestScriptClass</mainClass>
 							<arguments>
+								<!--setup the excel file where you store test cases-->
 								<argument>input-excel-file/test-cases/VETC-OPS-CYC_INTF.xlsx</argument>
+								<!--setup sheet index in the excel file-->
 								<argument>0</argument>
-								<argument>TestConfig</argument>
 							</arguments>
 						</configuration>
 					</plugin>
@@ -190,20 +208,31 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>3.0.0-M5</version>
+						<!--SETUP TEST REPORT-->
 						<configuration>
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>com.etl.testReport.CustomReporter</value>
+								</property>
+							</properties>
+							<!--SETUP SOURCE AND TARGET DATABASE CONNECTION-->
 							<systemPropertyVariables>
-								<srcDbUrl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</srcDbUrl>
-								<srcDbUser>rating_owner</srcDbUser>
-								<srcDbPass>rating_owner</srcDbPass>
-								<srcDbType>ORACLE</srcDbType>
-								<targDbUrl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</targDbUrl>
-								<targDbUser>rating_owner</targDbUser>
-								<targDbPass>rating_owner</targDbPass>
-								<targDbType>ORACLE</targDbType>
+								<srcDbUrl>${oracle.DBUrl.orcl}</srcDbUrl>
+								<srcDbUser>${oracle.DBUser.orcl}</srcDbUser>
+								<srcDbPass>${oracle.DBPass.orcl}</srcDbPass>
+								<srcDbType>${oracle.DBType}</srcDbType>
+								<targDbUrl>${oracle.DBUrl.orcl}</targDbUrl>
+								<targDbUser>${oracle.DBUser.orcl}</targDbUser>
+								<targDbPass>${oracle.DBPass.orcl}</targDbPass>
+								<targDbType>${oracle.DBType}</targDbType>
 							</systemPropertyVariables>
+							<!--SETUP DISABLE TEST SKIPPED-->
 							<skip>false</skip>
+							<!--SETUP TEST SUITES-->
 							<suiteXmlFiles>
-								<suiteXmlFile>${project.build.testOutputDirectory}/AllTesting.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf2.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>

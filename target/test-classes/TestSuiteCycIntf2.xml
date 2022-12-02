@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="TestCycIntf2">
+  <test name="Test">
+    <classes>
+      <class name="com.etl.test.testconfig.TestConfig"/>
+      <class name="com.etl.test.testscripts.TestCycIntf2"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

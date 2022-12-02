@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="allSuites">
- <listeners>
-        <listener class-name="com.etl.testReport.CustomReporter" />
-  </listeners>
   <suite-files>
     <suite-file path="TestSuiteCycIntf.xml" />
   </suite-files>

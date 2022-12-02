@@ -12,7 +12,7 @@ import com.etl.common.database.DatabaseUtils.DbTypes;
 import com.etl.common.datasource.DBConn;
 import com.etl.common.tables.Book;
 
-public class GenerateTestDataForLocalDb {
+public class GenerateTestData {
 	
 	public static void main(String[] args) throws Exception {
 		System.out.println("----------------------------");

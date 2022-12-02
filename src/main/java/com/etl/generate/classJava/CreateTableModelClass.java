@@ -14,7 +14,7 @@ import com.etl.common.database.DatabaseUtils;
 import com.etl.common.database.DatabaseUtils.DbTypes;
 import com.etl.common.datasource.DBConn;
 
-public class GenerateObjectModel {
+public class CreateTableModelClass {
 
 	/**
 	 * Create java class

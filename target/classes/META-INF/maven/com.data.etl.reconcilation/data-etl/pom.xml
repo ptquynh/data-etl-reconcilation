@@ -20,7 +20,7 @@
 		<zookeeper.version>3.4.14</zookeeper.version>
 		<fillo.version>1.15</fillo.version>
 		<ibatis.version>3.0</ibatis.version>
-		<maven.test.skip>true</maven.test.skip>
+		<exec.maven.plugin.version>3.0.0</exec.maven.plugin.version>
 		<maven-surefire-plugin.version>2.12.1</maven-surefire-plugin.version>
 	</properties>
 
@@ -117,9 +117,10 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>${exec.maven.plugin.version}</version>
 						<configuration>
-							<mainClass>com.etl.generate.classJava.GenerateObjectModel</mainClass>
+							<!--Generate CLOSED_CYCLE Table Class Model-->
+							<mainClass>com.etl.generate.classJava.CreateTableModelClass</mainClass>
 							<arguments>
 								<argument>jdbc:oracle:thin:@10.0.9.226:1521:orcl</argument>
 								<argument>rating_owner</argument>
@@ -140,9 +141,10 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>${exec.maven.plugin.version}</version>
 						<configuration>
-							<mainClass>com.etl.execute.sqlFileStatements.GenerateTestDataForLocalDb</mainClass>
+							<!--INSERT DATA FOR BOOK Table-->
+							<mainClass>com.etl.execute.sqlFileStatements.GenerateTestData</mainClass>
 							<arguments>
 								<argument>dbc:postgresql://localhost:5432/postgres</argument>
 								<argument>postgres</argument>
@@ -165,9 +167,10 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>${exec.maven.plugin.version}</version>
 						<configuration>
-							<mainClass>com.etl.generate.classJava.GenerateTestScriptClass</mainClass>
+							<!--CREATE TEST SCIPT FOR CYC_INTF TABLE-->
+							<mainClass>com.etl.generate.classJava.CreateTestScriptClass</mainClass>
 							<arguments>
 								<argument>input-excel-file/test-cases/VETC-OPS-CYC_INTF.xlsx</argument>
 								<argument>0</argument>
@@ -188,9 +191,19 @@
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>3.0.0-M5</version>
 						<configuration>
+							<systemPropertyVariables>
+								<srcDbUrl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</srcDbUrl>
+								<srcDbUser>rating_owner</srcDbUser>
+								<srcDbPass>rating_owner</srcDbPass>
+								<srcDbType>ORACLE</srcDbType>
+								<targDbUrl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</targDbUrl>
+								<targDbUser>rating_owner</targDbUser>
+								<targDbPass>rating_owner</targDbPass>
+								<targDbType>ORACLE</targDbType>
+							</systemPropertyVariables>
 							<skip>false</skip>
 							<suiteXmlFiles>
-								<suiteXmlFile>src/test/resources/test-suites/AllTesting.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/AllTesting.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
@@ -205,7 +218,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>${exec.maven.plugin.version}</version>
 						<configuration>
 							<mainClass>com.etl.common.email.SendEmail</mainClass>
 						</configuration>
@@ -216,6 +229,12 @@
 	</profiles>
 
 	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources/test-suites</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -11,7 +11,7 @@ import com.etl.common.TestCaseModel;
 import com.etl.common.Utils;
 import static com.etl.common.TestLogger.info;
 
-public class GenerateTestScriptClass {
+public class CreateTestScriptClass {
 
 	/**
 	 * Generate Test scripts

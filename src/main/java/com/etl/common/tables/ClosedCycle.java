@@ -1,4 +1,5 @@
 package com.etl.common.tables;
+import java.util.*;
 public class ClosedCycle {
 		private int cycle_id;
 		private String cycle_code;

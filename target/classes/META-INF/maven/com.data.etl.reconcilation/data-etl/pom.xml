@@ -124,7 +124,7 @@
 	<profiles>
 		<!--Step 1: Generate Table Class Model-->
 		<profile>
-			<id>gen-object-model</id>
+			<id>gen-table-model</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -139,7 +139,7 @@
 								<argument>${oracle.DBUser.orcl}</argument>
 								<argument>${oracle.DBPass.orcl}</argument>
 								<argument>${oracle.DBType}</argument>
-								<argument>CLOSED_CYCLE</argument>
+								<argument>CLOSED_CYCLE,TOLL,TOLL_CYCLE</argument>
 							</arguments>
 						</configuration>
 					</plugin>

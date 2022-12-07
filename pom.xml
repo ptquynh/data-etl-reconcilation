@@ -26,14 +26,20 @@
 		<!-- Database Information -->
 		<oracle.DBType>ORACLE</oracle.DBType>
 		<postgresql.DBType>POSTGRESQL</postgresql.DBType>
+		<hive.DBType>HIVE</hive.DBType>
 
 		<oracle.DBUrl.orcl>jdbc:oracle:thin:@10.0.9.226:1521:orcl</oracle.DBUrl.orcl>
 		<oracle.DBUser.orcl>rating_owner</oracle.DBUser.orcl>
 		<oracle.DBPass.orcl>rating_owner</oracle.DBPass.orcl>
 
-		<postgresql.DBUrl.postgres>dbc:postgresql://localhost:5432/postgres</postgresql.DBUrl.postgres>
+		<postgresql.DBUrl.postgres>jdbc:postgresql://localhost:5432/postgres</postgresql.DBUrl.postgres>
 		<postgresql.DBUser.postgres>rating_owner</postgresql.DBUser.postgres>
 		<postgresql.DBPass.postgres>rating_owner</postgresql.DBPass.postgres>
+		
+		
+		<hive.DBUrl>jdbc:hive2://10.0.9.237:10000/intf</hive.DBUrl>
+		<hive.DBUser>test4</hive.DBUser>
+		<hive.DBPass>carpla@123</hive.DBPass>
 
 	</properties>
 
@@ -190,7 +196,7 @@
 							<mainClass>com.etl.generate.classJava.CreateTestScriptClass</mainClass>
 							<arguments>
 								<!--setup the excel file where you store test cases-->
-								<argument>input-excel-file/test-cases/VETC-OPS-CYC_INTF.xlsx</argument>
+								<argument>input-excel-file/test-cases/TC_VETC_OPS_CYC_INTF.xlsx</argument>
 								<!--setup sheet index in the excel file-->
 								<argument>0</argument>
 							</arguments>
@@ -201,7 +207,7 @@
 		</profile>
 		<!--Step 4: Run Test Suite-->
 		<profile>
-			<id>run-test-suite</id>
+			<id>etl-orcl-test-suite</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -226,6 +232,45 @@
 								<targDbUser>${oracle.DBUser.orcl}</targDbUser>
 								<targDbPass>${oracle.DBPass.orcl}</targDbPass>
 								<targDbType>${oracle.DBType}</targDbType>
+							</systemPropertyVariables>
+							<!--SETUP DISABLE TEST SKIPPED-->
+							<skip>false</skip>
+							<!--SETUP TEST SUITES-->
+							<suiteXmlFiles>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf2.xml</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>etl-orcl-hive-test-suite</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.0.0-M5</version>
+						<!--SETUP TEST REPORT-->
+						<configuration>
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>com.etl.testReport.CustomReporter</value>
+								</property>
+							</properties>
+							<!--SETUP SOURCE AND TARGET DATABASE CONNECTION-->
+							<systemPropertyVariables>
+								<srcDbUrl>${oracle.DBUrl.orcl}</srcDbUrl>
+								<srcDbUser>${oracle.DBUser.orcl}</srcDbUser>
+								<srcDbPass>${oracle.DBPass.orcl}</srcDbPass>
+								<srcDbType>${oracle.DBType}</srcDbType>
+								<targDbUrl>${hive.DBUrl}</targDbUrl>
+								<targDbUser>${hive.DBUser}</targDbUser>
+								<targDbPass>${hive.DBPass}</targDbPass>
+								<targDbType>${hive.DBType}</targDbType>
 							</systemPropertyVariables>
 							<!--SETUP DISABLE TEST SKIPPED-->
 							<skip>false</skip>

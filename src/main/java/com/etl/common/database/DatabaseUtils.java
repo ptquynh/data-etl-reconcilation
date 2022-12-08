@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
@@ -253,14 +255,18 @@ public class DatabaseUtils extends DBConn{
 		List<Object> values = new ArrayList<>();
 		int columnCount =rs.getMetaData().getColumnCount();
 		while(rs.next()){
-			for(int i=1;i<=columnCount;i++)
+			for(int i=1;i<=columnCount;i++) {
 				values.add(rs.getObject(i));
-			    //System.out.println("values:"+values);
+			}
 		}
-		System.out.println("values:"+values);
-		return values;
+		values.removeAll(Collections.singleton(""));
+		
+		List<Object> newlist=values.stream().filter(Objects::nonNull).collect(Collectors.toList());
+		System.out.println("values_1:"+newlist);
+		return newlist;
 	}
 
+	
 	/**
 	 * Get all values of a specific column by index
 	 * @param sql

@@ -6,10 +6,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import org.junit.Assert;
+
 import com.etl.common.ExcelToObjectMapper;
 import com.etl.common.TestCaseModel;
 import com.etl.common.Utils;
-import static com.etl.common.TestLogger.info;
 
 public class CreateTestScriptClass {
 
@@ -21,7 +23,7 @@ public class CreateTestScriptClass {
 	public static void main(String[] args) throws Exception {
 		
 		//Set parameters of the class
-		String excelFile=args[0];
+		String excelFile=Utils.getFilePath(args[0]);
 		String indexSheet=args[1];
 		String testConfigName="TestConfig";
 		
@@ -48,7 +50,9 @@ public class CreateTestScriptClass {
             String steps=testcase.getSteps();
             String sourceDB=testcase.getSourceDB();
             String targetDB=testcase.getTargetDB();
-            String sourceQuery=testcase.getSourceQuery().replace("\n"," ").replace("\\d","\\\\d");
+            String sourceQuery=null;
+            if(testcase.getSourceQuery().toString()!="")
+            	sourceQuery=testcase.getSourceQuery().replace("\n"," ").replace("\\d","\\\\d");
             String targetQuery=testcase.getTargetQuery().replace("\n"," ").replace("\\d","\\\\d");
             String expectedResults=testcase.getExpectedResult();
             
@@ -62,6 +66,58 @@ public class CreateTestScriptClass {
 		System.out.println("-----------End generating----------------------");
 				
 	}
+	
+//	public static void genTestScript(String testID,String testTitle,String testDescription,String testPrecondition,String testPriority,
+//			String labels,String testComponent,String steps,String sourceDB,String targetDB,String sourceQuery,
+//			String targetQuery,String expectedResults,PrintWriter out) throws IOException {
+//		    if(testPriority.contentEquals("High")) testPriority="1";
+//		    else if(testPriority.contentEquals("Medium")) testPriority="2";
+//		    else if(testPriority.contentEquals("Low")) testPriority="3";
+//		    else testPriority="4";
+//		    out.append("\n\n");
+//		    out.append("\t\t@Test(")
+//		        .append("priority="+testPriority+",")
+//		        .append("groups={\""+labels+"\",\""+testComponent+"\"")
+//		        .append("})\n")
+//		        .append("\t\tpublic void "+testID+"_"+testTitle.replace("[","_")
+//		                                                       .replace("]","_")
+//		                                                       .replace("\"","")
+//		                                                       .replace(" ","")+"() throws SQLException {"+"\n");
+//		        //Generate test case description
+//		        out.append("\t\t/**\n");
+//				out.append("\t\t* Test case ID:"+testID+"\n");
+//				out.append("\t\t* Test case name:"+ testTitle + "\n");
+//				out.append("\t\t* Test Description:"+ testDescription + "\n");
+//				out.append("\t\t* Precondition:"+ testPrecondition + "\n");
+//				out.append("\t\t* Priority:"+ testPriority + "\n");
+//				out.append("\t\t* Labels:"+ labels + "\n");
+//				out.append("\t\t* SourceDB: "+sourceDB+"\n");
+//				out.append("\t\t* TargetDB:"+targetDB+"\n");
+//				out.append("\t\t* Test details:\n");
+//				out.append("\t\t* 1. Run Source Query: "+sourceQuery+"\n");
+//				out.append("\t\t* 2. Run Target Query:"+targetQuery+"\n");
+//				out.append("\t\t* Expected Results: "+expectedResults+"\n");
+//				out.append("\t\t*/\n");
+//				
+//				//Generate test script code
+//				if(sourceQuery!=null && targetQuery!=null) {
+//					String diffFunct="DatabaseUtils.getDiffResultQueries(1,2,3,4)";
+//					String srcQuery=sourceQuery.replace("\"","\\\"");
+//					String tgQuery=targetQuery.replace("\"","\\\"");
+//					out.append("\t\t\tString sourceQuery=\""+ srcQuery +"\""+";\n");
+//					out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
+//					out.append("\t\t\tList<Object> diffResultQueries="
+//					+ diffFunct.replace("1","sourceQuery")
+//                    .replace("2","targetQuery")
+//                    .replace("3","srcConn")
+//                    .replace("4","tagConn"));
+//					out.append(";\n");
+//					out.append("\t\t\tUtils.verify(diffResultQueries);\n");
+//				}else {
+//					info("Source Query or Target Query are not available");
+//				}
+//		        out.append("\t\t}\n");
+//	}
 	/**
 	 * Generate contents of Test Scripts
 	 * @param testID
@@ -89,12 +145,21 @@ public class CreateTestScriptClass {
 		    out.append("\n\n");
 		    out.append("\t\t@Test(")
 		        .append("priority="+testPriority+",")
-		        .append("groups={\""+labels+"\",\""+testComponent+"\"")
-		        .append("})\n")
-		        .append("\t\tpublic void "+testID+"_"+testTitle.replace("[","_")
-		                                                       .replace("]","_")
-		                                                       .replace("\"","")
-		                                                       .replace(" ","")+"() throws SQLException {"+"\n");
+		        .append("groups={\""+labels+"\",\""+ testComponent+"\"")
+		        .append("})\n");
+		    
+		         if(sourceDB.equals("EXCEL_FILE")) {
+		        	 out.append("\t\tpublic void "+testID+"_"+testTitle.replace("[","_")
+                     .replace("]","_")
+                     .replace("\"","")
+                     .replace(" ","")+"() throws SQLException,FilloException {"+"\n");
+		         }else {
+		        	 out.append("\t\tpublic void "+testID+"_"+testTitle.replace("[","_")
+                     .replace("]","_")
+                     .replace("\"","")
+                     .replace(" ","")+"() throws SQLException {"+"\n");
+		         }
+		        	 
 		        //Generate test case description
 		        out.append("\t\t/**\n");
 				out.append("\t\t* Test case ID:"+testID+"\n");
@@ -111,23 +176,64 @@ public class CreateTestScriptClass {
 				out.append("\t\t* Expected Results: "+expectedResults+"\n");
 				out.append("\t\t*/\n");
 				
-				//Generate test script code
-				if(sourceQuery!=null && targetQuery!=null) {
-					String diffFunct="DatabaseUtils.getDiffResultQueries(1,2,3,4)";
-					String srcQuery=sourceQuery.replace("\"","\\\"");
-					String tgQuery=targetQuery.replace("\"","\\\"");
-					out.append("\t\t\tString sourceQuery=\""+ srcQuery +"\""+";\n");
-					out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
-					out.append("\t\t\tList<Object> diffResultQueries="
-					+ diffFunct.replace("1","sourceQuery")
-                    .replace("2","targetQuery")
-                    .replace("3","srcConn")
-                    .replace("4","tagConn"));
-					out.append(";\n");
-					out.append("\t\t\tUtils.verify(diffResultQueries);\n");
+				String getColValueFromDB="DatabaseUtils.getColumnValues(1,2)";
+				String getColValueFromExcel="ExcelUtils.getColumnValues(1,2)";
+				String diffList="Utils.getDiffList(1,2)";
+				
+
+				if(testComponent.equals("Reconcilation Testing")) {
+					
+					if(((sourceQuery.equals("")||sourceQuery.equals("N/A")||sourceQuery.equals(null))) || 
+							((targetQuery.equals("")||targetQuery.equals("N/A")||targetQuery.equals(null)))){
+						Assert.fail("SourceQuery or Target Query is invalid");
+					} else {
+						
+						String tgQuery=targetQuery.replace("\"","\\\"");
+						String srcQuery=sourceQuery.replace("\"","\\\"");
+						out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
+						out.append("\t\t\tString sourceQuery=\""+ srcQuery +"\""+";\n");
+						out.append("\t\t\tList<Object> targList="
+								+ getColValueFromDB.replace("1","targetQuery")
+			                    .replace("2","tagConn"));
+						out.append(";\n");
+						
+						if(sourceDB.equals("EXCEL_FILE")) {
+							out.append("\t\t\tList<Object> srcList="
+									+ getColValueFromExcel.replace("1","sourceQuery")
+				                    .replace("2","srcExcelConn"));
+							out.append(";\n");
+							
+						}else {
+							out.append("\t\t\tList<Object> srcList="
+									+ getColValueFromDB.replace("1","sourceQuery")
+				                    .replace("2","srcConn"));
+							out.append(";\n");
+						}
+						
+						out.append("\t\t\tList<Object> diffSrcInTarg="
+								+ diffList.replace("1","srcList")
+			                    .replace("2","targList"));
+						out.append(";\n");
+						
+						out.append("\t\t\tList<Object> diffTargInSrc="
+								+ diffList.replace("1","targList")
+			                    .replace("2","srcList"));
+						
+						out.append(";\n");
+						out.append("\t\t\tUtils.verify(diffSrcInTarg,\"Not found in Source List\");\n");
+						out.append("\t\t\tUtils.verify(diffTargInSrc,\"Not found in Target List\");\n");
+					}
+					
 				}else {
-					info("Source Query or Target Query are not available");
+					String tgQuery=targetQuery.replace("\"","\\\"");
+					out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
+					out.append("\t\t\tList<Object> targList="
+							+ getColValueFromDB.replace("1","targetQuery")
+		                    .replace("2","tagConn"));
+					out.append(";\n");
+					out.append("\t\t\tUtils.verify(targList,\"Not return 0 values\");\n");
 				}
+				
 		        out.append("\t\t}\n");
 	}
 	
@@ -169,6 +275,8 @@ public class CreateTestScriptClass {
 		out.println("package " + packageName + ";");
 		out.println("import org.testng.annotations.Test;");
 		out.println("import com.etl.common.database.DatabaseUtils;");
+		out.println("import com.etl.common.database.ExcelUtils;");
+		out.println("import com.codoid.products.exception.FilloException;");
 		out.println("import java.util.List;");
 		out.println("import com.etl.test.testconfig.TestConfig;");
 		out.println("import java.sql.SQLException;");

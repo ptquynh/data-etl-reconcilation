@@ -37,7 +37,7 @@ Step 5: Add <argument> tag with database information
 Step 6: Add <argument> tag with table name in the databsae in step 5 above
 Step 7: Save all changes in POM xml file
 Step 8: Open Window Terminal or Git bash Terminal
-Step 3: Generate Table model by following command: mvn clean compile exec:java -Pgen-table-model
+Step 3: Generate Table model by following command: mvn compile exec:java -Pgen-table-model
 Step 4: Go to src/main/java folder
 Step 5: Open "GenerateTestData.java" in package "com.etl.generate.test.data"
 Step 6: Clone "genSqlStatementBookTable" funtion
@@ -51,7 +51,7 @@ Step 13: Add <argument> tag with the test data excel file where stored test data
 Step 14: Add <argument> tag with sql output file where will store INSERT SQL STATEMENTS
 Step 15: Save all changes in POM xml file
 Step 16: Open Window Terminal or Git bash Terminal
-Step 17: Run following commands: mvn clean compile exec:java -Pgen-test-data
+Step 17: Run following commands: mvn compile exec:java -Pgen-test-data
 ```
 ## How to Generate Test Script from Test Case file
 ```
@@ -63,7 +63,7 @@ Step 5: Add <argument> tag with file name and path as in step 3 above
 Step 6: Add <argument> tag with sheet index where stored test data
 Step 7: Save all changes in POM xml file
 Step 8: Open Window Terminal or Git bash Terminal
-Step 9: Run following commands: mvn clean compile exec:java -Pgen-test-script
+Step 9: Run following commands: mvn compile exec:java -Pgen-test-script
 ```
 ## How to Run Test Suite
 ```
@@ -88,5 +88,5 @@ Step 4: Update email address which will be received Test Report
 Step 5: Save all changes in POM xml file
 Step 6: Open Window Terminal or Git bash Terminal
 Step 7: Go to the Project's folder
-Step 8: Run following commands: mvn clean compile exec:java -Psend
+Step 8: Run following commands: mvn compile exec:java -Psend-email
 ```

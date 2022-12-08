@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Utils {
 
 	private static Scanner scanner; 
 
-	
+
 	/**************************DATE TIME*******************************************************
 	 * *********************************************************************************************
 	 */
@@ -197,7 +198,7 @@ public class Utils {
 		int minute = cal.get(Calendar.MINUTE);
 		return (minute); 
 	}
-	
+
 	/**
 	 * Get minute in format "HH" from current date
 	 * @return hours
@@ -210,7 +211,7 @@ public class Utils {
 		int minute = cal.get(Calendar.HOUR);
 		return (minute); 
 	}
-	
+
 	/**
 	 * Get date by text format
 	 * ex. Saturday, Febuary 16, 2015
@@ -328,7 +329,7 @@ public class Utils {
 		return differences;
 	}
 
-	
+
 	/******************************************EXTERNAL FILE**********************************************************
 	 * ************************************************************************************************************
 	 */
@@ -446,7 +447,7 @@ public class Utils {
 		//delete file in TestOutput
 		deleteFile("TestOutput/" + fileName);
 	}
-	
+
 	/**
 	 * Get path of an test data excel file in test-data-excel folder
 	 * @param fileName
@@ -460,11 +461,23 @@ public class Utils {
 	 * Verify a list
 	 * @param objList
 	 */
-	public static void verify(List<Object> objList) {
-		if(objList !=null) {
-			assert false : "Values returns as:"+objList;
+	public static void verify(List<Object> objList,String mesgError) {
+		if(objList.size()>0) {
+			assert false : mesgError+":"+objList;
 		}else assert true;
 	}
-	
+
+  /**
+   * find values exists in List 1 and not exist in list2
+   * @param List1
+   * @param List2
+   * @return
+   * @throws SQLException
+   */
+	public static List<Object> getDiffList(List<Object> List1,List<Object> List2) throws SQLException {
+		List<Object> diffList = List1.stream().filter(obj -> !List2.contains(obj)).collect(Collectors.toList()); 
+		return diffList;
+
+	}
 
 }

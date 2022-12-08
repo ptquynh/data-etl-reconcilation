@@ -128,7 +128,7 @@
 	</dependencies>
 
 	<profiles>
-		<!--Step 1: Generate Table Class Model-->
+		<!--Step 1: Generate Table Class Model: mvn compile exec:java -Pgen-table-model-->
 		<profile>
 			<id>gen-table-model</id>
 			<build>
@@ -152,7 +152,7 @@
 				</plugins>
 			</build>
 		</profile>
-		<!--Step 2: Generate SQL script for Test Data-->
+		<!--Step 2: Generate SQL script for Test Data: mvn compile exec:java -Pgen-test-data-->
 		<profile>
 			<id>gen-test-data</id>
 			<build>
@@ -182,7 +182,7 @@
 				</plugins>
 			</build>
 		</profile>
-		<!--Step 3: Generate Test Script from test case excel file-->
+		<!--Step 3: Generate Test Script from test case excel file: mvn compile exec:java -Pgen-test-script-->
 		<profile>
 			<id>gen-test-script</id>
 			<build>
@@ -205,9 +205,9 @@
 				</plugins>
 			</build>
 		</profile>
-		<!--Step 4: Run Test Suite-->
+		<!--Step 4: Run Test Suite: mvn test -Petl-orcl-orcl-->
 		<profile>
-			<id>etl-orcl-test-suite</id>
+			<id>etl-orcl-orcl</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -238,15 +238,15 @@
 							<!--SETUP TEST SUITES-->
 							<suiteXmlFiles>
 								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
-								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf2.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
+		<!--Step 4.1: Run Test Suite: mvn test -Petl-orcl-hive-->
 		<profile>
-			<id>etl-orcl-hive-test-suite</id>
+			<id>etl-orcl-hive</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -263,6 +263,7 @@
 							</properties>
 							<!--SETUP SOURCE AND TARGET DATABASE CONNECTION-->
 							<systemPropertyVariables>
+							    <excelPath>input-excel-file/schema/HIVE_INTF_SCHEMA.xlsx</excelPath>
 								<srcDbUrl>${oracle.DBUrl.orcl}</srcDbUrl>
 								<srcDbUser>${oracle.DBUser.orcl}</srcDbUser>
 								<srcDbPass>${oracle.DBPass.orcl}</srcDbPass>
@@ -277,14 +278,13 @@
 							<!--SETUP TEST SUITES-->
 							<suiteXmlFiles>
 								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
-								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf2.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
-		<!--Step 5: Send Test Report via email-->
+		<!--Step 5: Send Test Report via email: mvn compile exec:java -Psend-email-->
 		<profile>
 			<id>send-email</id>
 			<build>

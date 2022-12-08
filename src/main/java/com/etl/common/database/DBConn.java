@@ -45,6 +45,7 @@ public class DBConn{
 		}
 		return DriverManager.getConnection(url,user,pass);
 	}
+	
 	/**
 	 * Connect to a JDBC Database
 	 * @param dburl

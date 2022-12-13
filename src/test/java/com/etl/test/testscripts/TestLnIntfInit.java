@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import com.etl.common.Utils;
 
 
-public class TestLnIntf extends TestConfig {
+public class TestLnIntfInit extends TestConfig {
 
 
 		@Test(priority=1,groups={"Metadata","Reconcilation Testing"})
@@ -24,12 +24,12 @@ public class TestLnIntf extends TestConfig {
 		* SourceDB: EXCEL_FILE
 		* TargetDB:HIVE_SIT
 		* Test details:
-		* 1. Run Source Query: SELECT * FROM CYC_INTF
+		* 1. Run Source Query: SELECT * FROM LN_INTF
 		* 2. Run Target Query:DESCRIBE INTF.LN_INTF
 		* Expected Results: SQL results between source and target query are same
 		*/
 			String targetQuery="DESCRIBE INTF.LN_INTF";
-			String sourceQuery="SELECT * FROM CYC_INTF";
+			String sourceQuery="SELECT * FROM LN_INTF";
 			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			List<Object> srcList=ExcelUtils.getColumnValues(sourceQuery,srcExcelConn);
 			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);

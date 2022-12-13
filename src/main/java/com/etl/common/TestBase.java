@@ -88,7 +88,7 @@ public class TestBase {
 	//Test Report information
 	public final static String TEST_REPORT_FILE_NAME = "test-summary-report.html";
 	public final static String TEST_REPORT_TITLE= "Test Summary Report";
-	public final static String TEST_REPORT_PATH= "/test-output/"+TEST_REPORT_FILE_NAME;
+	public final static String TEST_REPORT_PATH= "/"+TEST_REPORT_FILE_NAME;
 
 	/**
 	 * Get System Property

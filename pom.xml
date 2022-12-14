@@ -166,16 +166,16 @@
 							<mainClass>com.etl.execute.sqlFileStatements.GenerateTestData</mainClass>
 							<arguments>
 							<!--setup database connection to get table schema-->
-								<argument>${postgresql.DBUrl.postgres}</argument>
-								<argument>${postgresql.DBUser.postgres}</argument>
-								<argument>${postgresql.DBPass.postgres}</argument>
-								<argument>${postgresql.DBType}</argument>
+								<argument>${oracle.DBUrl.orcl}</argument>
+								<argument>${oracle.DBUser.orcl}</argument>
+								<argument>${oracle.DBPass.orcl}</argument>
+								<argument>${oracle.DBType}</argument>
 								<!--setup table name where you want to insert test data into-->
 								<argument>book</argument>
 								<!--setup the excel file where you store test data-->
 								<argument>input-excel-file/book.xlsx</argument>
 								<!--setup the sql file where you want to save insert sql query-->
-								<argument>output-sql-file/book.sql</argument>
+								<argument>output-sql-file/TOLL_LANE_INSERT.sql</argument>
 							</arguments>
 						</configuration>
 					</plugin>

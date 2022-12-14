@@ -44,10 +44,10 @@ public class ExcelUtils {
 	 * @throws SQLException
 	 * @throws FilloException
 	 */
-	public static List<Object> getColumnValues(String sql,Connection con) throws SQLException, FilloException {
+	public static List<String> getColumnValues(String sql,Connection con) throws SQLException, FilloException {
 		
 		rs = con.executeQuery(sql);
-		List<Object> values = new ArrayList<>();
+		List<String> values = new ArrayList<>();
 		int totalCol = rs.getFieldNames().size();
 		while(rs.next()){
 			for(int i=0;i<totalCol;i++) {

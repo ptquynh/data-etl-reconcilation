@@ -67,57 +67,7 @@ public class CreateTestScriptClass {
 				
 	}
 	
-//	public static void genTestScript(String testID,String testTitle,String testDescription,String testPrecondition,String testPriority,
-//			String labels,String testComponent,String steps,String sourceDB,String targetDB,String sourceQuery,
-//			String targetQuery,String expectedResults,PrintWriter out) throws IOException {
-//		    if(testPriority.contentEquals("High")) testPriority="1";
-//		    else if(testPriority.contentEquals("Medium")) testPriority="2";
-//		    else if(testPriority.contentEquals("Low")) testPriority="3";
-//		    else testPriority="4";
-//		    out.append("\n\n");
-//		    out.append("\t\t@Test(")
-//		        .append("priority="+testPriority+",")
-//		        .append("groups={\""+labels+"\",\""+testComponent+"\"")
-//		        .append("})\n")
-//		        .append("\t\tpublic void "+testID+"_"+testTitle.replace("[","_")
-//		                                                       .replace("]","_")
-//		                                                       .replace("\"","")
-//		                                                       .replace(" ","")+"() throws SQLException {"+"\n");
-//		        //Generate test case description
-//		        out.append("\t\t/**\n");
-//				out.append("\t\t* Test case ID:"+testID+"\n");
-//				out.append("\t\t* Test case name:"+ testTitle + "\n");
-//				out.append("\t\t* Test Description:"+ testDescription + "\n");
-//				out.append("\t\t* Precondition:"+ testPrecondition + "\n");
-//				out.append("\t\t* Priority:"+ testPriority + "\n");
-//				out.append("\t\t* Labels:"+ labels + "\n");
-//				out.append("\t\t* SourceDB: "+sourceDB+"\n");
-//				out.append("\t\t* TargetDB:"+targetDB+"\n");
-//				out.append("\t\t* Test details:\n");
-//				out.append("\t\t* 1. Run Source Query: "+sourceQuery+"\n");
-//				out.append("\t\t* 2. Run Target Query:"+targetQuery+"\n");
-//				out.append("\t\t* Expected Results: "+expectedResults+"\n");
-//				out.append("\t\t*/\n");
-//				
-//				//Generate test script code
-//				if(sourceQuery!=null && targetQuery!=null) {
-//					String diffFunct="DatabaseUtils.getDiffResultQueries(1,2,3,4)";
-//					String srcQuery=sourceQuery.replace("\"","\\\"");
-//					String tgQuery=targetQuery.replace("\"","\\\"");
-//					out.append("\t\t\tString sourceQuery=\""+ srcQuery +"\""+";\n");
-//					out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
-//					out.append("\t\t\tList<Object> diffResultQueries="
-//					+ diffFunct.replace("1","sourceQuery")
-//                    .replace("2","targetQuery")
-//                    .replace("3","srcConn")
-//                    .replace("4","tagConn"));
-//					out.append(";\n");
-//					out.append("\t\t\tUtils.verify(diffResultQueries);\n");
-//				}else {
-//					info("Source Query or Target Query are not available");
-//				}
-//		        out.append("\t\t}\n");
-//	}
+
 	/**
 	 * Generate contents of Test Scripts
 	 * @param testID
@@ -192,30 +142,30 @@ public class CreateTestScriptClass {
 						String srcQuery=sourceQuery.replace("\"","\\\"");
 						out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
 						out.append("\t\t\tString sourceQuery=\""+ srcQuery +"\""+";\n");
-						out.append("\t\t\tList<Object> targList="
+						out.append("\t\t\tList<String> targList="
 								+ getColValueFromDB.replace("1","targetQuery")
 			                    .replace("2","tagConn"));
 						out.append(";\n");
 						
 						if(sourceDB.equals("EXCEL_FILE")) {
-							out.append("\t\t\tList<Object> srcList="
+							out.append("\t\t\tList<String> srcList="
 									+ getColValueFromExcel.replace("1","sourceQuery")
 				                    .replace("2","srcExcelConn"));
 							out.append(";\n");
 							
 						}else {
-							out.append("\t\t\tList<Object> srcList="
+							out.append("\t\t\tList<String> srcList="
 									+ getColValueFromDB.replace("1","sourceQuery")
 				                    .replace("2","srcConn"));
 							out.append(";\n");
 						}
 						
-						out.append("\t\t\tList<Object> diffSrcInTarg="
+						out.append("\t\t\tList<String> diffSrcInTarg="
 								+ diffList.replace("1","srcList")
 			                    .replace("2","targList"));
 						out.append(";\n");
 						
-						out.append("\t\t\tList<Object> diffTargInSrc="
+						out.append("\t\t\tList<String> diffTargInSrc="
 								+ diffList.replace("1","targList")
 			                    .replace("2","srcList"));
 						
@@ -227,7 +177,7 @@ public class CreateTestScriptClass {
 				}else {
 					String tgQuery=targetQuery.replace("\"","\\\"");
 					out.append("\t\t\tString targetQuery=\""+ tgQuery +"\""+";\n");
-					out.append("\t\t\tList<Object> targList="
+					out.append("\t\t\tList<String> targList="
 							+ getColValueFromDB.replace("1","targetQuery")
 		                    .replace("2","tagConn"));
 					out.append(";\n");

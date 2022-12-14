@@ -42,7 +42,7 @@ public class DatabaseUtils extends DBConn{
      * @return
      * @throws SQLException
      */
-	public static List<Object> getTableMeta(String tableName,Connection conn,DbTypes db) throws SQLException{
+	public static List<String> getTableMeta(String tableName,Connection conn,DbTypes db) throws SQLException{
 		info("Connecting to database...");
 		String sql=null;
 		switch(db) {
@@ -233,10 +233,10 @@ public class DatabaseUtils extends DBConn{
      * @return
      * @throws SQLException
      */
-    public static List<Object> getDiffResultQueries(String srcQuery,String tagQuery, Connection srcConn, Connection tagConn) throws SQLException {
-    	List<Object> srcValues =getColumnValues(srcQuery,srcConn);
-    	List<Object> tagValues = getColumnValues(tagQuery,tagConn);
-		List<Object> diffList = tagValues.stream().filter(obj -> !srcValues.contains(obj)).collect(Collectors.toList()); 
+    public static List<String> getDiffResultQueries(String srcQuery,String tagQuery, Connection srcConn, Connection tagConn) throws SQLException {
+    	List<String> srcValues =getColumnValues(srcQuery,srcConn);
+    	List<String> tagValues = getColumnValues(tagQuery,tagConn);
+		List<String> diffList = tagValues.stream().filter(obj -> !srcValues.contains(obj)).collect(Collectors.toList()); 
 		return diffList;
     	
     }
@@ -249,19 +249,24 @@ public class DatabaseUtils extends DBConn{
 	 * @return
 	 * @throws SQLException
 	 */
-	public static List<Object> getColumnValues(String sql,Connection con) throws SQLException {
+	public static List<String> getColumnValues(String sql,Connection con) throws SQLException {
 		Statement stmt = con.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
-		List<Object> values = new ArrayList<>();
+		List<String> values = new ArrayList<>();
 		int columnCount =rs.getMetaData().getColumnCount();
 		while(rs.next()){
 			for(int i=1;i<=columnCount;i++) {
-				values.add(rs.getObject(i));
+				if(!rs.getObject(i).equals(null)|| !rs.getObject(i).equals("")) {
+					values.add(rs.getObject(i).toString());
+				}else {
+					values.add("");
+				}
+				
 			}
 		}
 		values.removeAll(Collections.singleton(""));
 		
-		List<Object> newlist=values.stream().filter(Objects::nonNull).collect(Collectors.toList());
+		List<String> newlist=values.stream().filter(Objects::nonNull).collect(Collectors.toList());
 		System.out.println("values_1:"+newlist);
 		return newlist;
 	}

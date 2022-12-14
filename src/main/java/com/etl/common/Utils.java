@@ -461,7 +461,7 @@ public class Utils {
 	 * Verify a list
 	 * @param objList
 	 */
-	public static void verify(List<Object> objList,String mesgError) {
+	public static void verify(List<String> objList,String mesgError) {
 		if(objList.size()>0) {
 			assert false : mesgError+":"+objList;
 		}else assert true;
@@ -474,8 +474,9 @@ public class Utils {
    * @return
    * @throws SQLException
    */
-	public static List<Object> getDiffList(List<Object> List1,List<Object> List2) throws SQLException {
-		List<Object> diffList = List1.stream().filter(obj -> !List2.contains(obj)).collect(Collectors.toList()); 
+	public static List<String> getDiffList(List<String> List1,List<String> List2) throws SQLException {
+		List<String> diffList = List1.stream().filter(obj -> !List2.contains(obj)).collect(Collectors.toList()); 
+		System.out.println("diffList:"+diffList);
 		return diffList;
 
 	}

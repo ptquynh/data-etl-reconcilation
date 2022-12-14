@@ -175,7 +175,7 @@
 								<!--setup the excel file where you store test data-->
 								<argument>input-excel-file/book.xlsx</argument>
 								<!--setup the sql file where you want to save insert sql query-->
-								<argument>output-sql-file/TOLL_LANE_DELETE.sql</argument>
+								<argument>output-sql-file/CLOSED_CYCLE_DELETE.sql</argument>
 							</arguments>
 						</configuration>
 					</plugin>

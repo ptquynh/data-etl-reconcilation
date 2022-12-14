@@ -30,10 +30,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="DESCRIBE INTF.LN_INTF";
 			String sourceQuery="SELECT * FROM LN_INTF";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=ExcelUtils.getColumnValues(sourceQuery,srcExcelConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=ExcelUtils.getColumnValues(sourceQuery,srcExcelConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -57,10 +57,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT COUNT(*) AS NUM_RECORDS FROM INTF.LN_INTF";
 			String sourceQuery="SELECT COUNT(*)  AS NUM_RECORDS FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -84,10 +84,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -111,10 +111,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, LN_CODE FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_CODE FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -138,10 +138,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, LN_NM FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_NAME FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -165,10 +165,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, LN_TP FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_TYPE FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -192,10 +192,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, LN_STT FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, STATUS FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -219,10 +219,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, TOLL_ID FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, TOLL_ID FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -246,10 +246,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SRC_STM_CODE FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, 'TOLL_LANE' AS SRC_STM_CODE FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -273,10 +273,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SRC_STM_NM FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, 'TOLL_LANE' AS SRC_STM_NM FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -300,10 +300,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, PCS_DT FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, TO_CHAR(to_date(CURRENT_DATE),'yyyy-mm-dd') AS PCS_DT FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -327,10 +327,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SUBSTR(PPN_TMS,0,4) AS PPN_TMS_EXTRACT FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, REGEXP_SUBSTR(((SYSDATE - TO_DATE('1970-01-01', 'yyyy-MM-dd')) * (24 * 60 * 60 * 1000)),'^[0-9,]{4}') AS PPN_TMS_EXTRACT FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -354,10 +354,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, CRN_ROW_IND FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, '1' AS CRN_ROW_IND FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -381,10 +381,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SUBSTR(EFF_FM_TMS,0,10) AS EFF_FM_TMS_EXTRACT FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, TO_CHAR(CURRENT_DATE,'YYYY-MM-DD') AS EFF_FM_TMS_EXTRACT FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -408,10 +408,10 @@ public class TestLnIntfInit extends TestConfig {
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SUBSTR(EFF_TO_TMS,0,10) AS EFF_TO_TMS_EXTRACT FROM INTF.LN_INTF ORDER BY UNQ_ID_IN_SRC_STM";
 			String sourceQuery="SELECT TOLL_LANE_ID, '2400-01-01' AS EFF_FM_TMS_EXTRACT FROM RATING_OWNER.TOLL_LANE WHERE STATUS = 1 ORDER BY TOLL_LANE_ID";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -434,7 +434,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, count(*) as frequency FROM INTF.LN_INTF WHERE UNQ_ID_IN_SRC_STM is not null or UNQ_ID_IN_SRC_STM ='' or UNQ_ID_IN_SRC_STM <=0 GROUP BY UNQ_ID_IN_SRC_STM HAVING count(*)>1";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -456,7 +456,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT LN_ANCHOR_ID, count(*) as frequency FROM INTF.LN_INTF GROUP BY LN_ANCHOR_ID HAVING count(*)>1";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -478,7 +478,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE UNQ_ID_IN_SRC_STM is null or UNQ_ID_IN_SRC_STM =''  or UNQ_ID_IN_SRC_STM <=0";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -500,7 +500,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE PCS_DT is null or PCS_DT =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -522,7 +522,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE PPN_TMS is null or PPN_TMS =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -544,7 +544,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE SRC_STM_CODE is null or SRC_STM_CODE =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -566,7 +566,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE SRC_STM_NM is null or SRC_STM_NM =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -588,7 +588,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE CRN_ROW_IND is null or CRN_ROW_IND =''  or CRN_ROW_IND <=0";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -610,7 +610,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE EFF_FM_TMS is null or EFF_FM_TMS =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -632,7 +632,7 @@ public class TestLnIntfInit extends TestConfig {
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT * FROM INTF.LN_INTF WHERE EFF_TO_TMS is null or EFF_TO_TMS =''";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -655,7 +655,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SRC_STM_CODE FROM LN_INTF WHERE SRC_STM_CODE <> 'TOLL_LANE'";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -678,7 +678,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, SRC_STM_NM FROM LN_INTF WHERE SRC_STM_NM <> 'TOLL_LANE'";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -700,7 +700,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, PCS_DT FROM LN_INTF WHERE PCS_DT > CURRENT_DATE";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -722,7 +722,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, CRN_ROW_IND FROM LN_INTF WHERE CRN_ROW_IND NOT IN (0,1)";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -744,7 +744,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, EFF_TO_TMS, CRN_ROW_IND FROM LN_INTF WHERE EFF_TO_TMS = '2400-01-01 23:59:59' AND CRN_ROW_IND <> 1";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -766,7 +766,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="SELECT UNQ_ID_IN_SRC_STM, EFF_TO_TMS, CRN_ROW_IND FROM LN_INTF WHERE EFF_FM_TMS > EFF_TO_TMS";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -788,7 +788,7 @@ only 1 value is 'TOLL_LANE'
 		* Expected Results: Not return any values
 		*/
 			String targetQuery="WITH LN_INTF_CONVER AS ( SELECT ROW_NUMBER () OVER (PARTITION BY UNQ_ID_IN_SRC_STM ORDER BY EFF_FM_TMS ASC) AS RANK 	, UNQ_ID_IN_SRC_STM 	, EFF_FM_TMS 	, EFF_TO_TMS FROM LN_INTF ) SELECT a.UNQ_ID_IN_SRC_STM, a.EFF_FM_TMS, a.EFF_TO_TMS, b.EFF_FM_TMS, b.EFF_TO_TMS FROM LN_INTF_CONVER a  JOIN LN_INTF_CONVER b ON a.UNQ_ID_IN_SRC_STM = b.UNQ_ID_IN_SRC_STM AND a.RANK = b.RANK + 1 WHERE a.EFF_FM_TMS <> b.EFF_TO_TMS";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 		

@@ -277,7 +277,7 @@
 							<skip>false</skip>
 							<!--SETUP TEST SUITES-->
 							<suiteXmlFiles>
-								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteLnIntf.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>

@@ -196,7 +196,7 @@
 							<mainClass>com.etl.generate.classJava.CreateTestScriptClass</mainClass>
 							<arguments>
 								<!--setup the excel file where you store test cases-->
-								<argument>input-excel-file/test-cases/TC_VETC_OPS_CYC_INTF.xlsx</argument>
+								<argument>input-excel-file/test-cases/TC_VETC_OPS_LN_INTF.xlsx</argument>
 								<!--setup sheet index in the excel file-->
 								<argument>1</argument>
 							</arguments>
@@ -237,7 +237,7 @@
 							<skip>false</skip>
 							<!--SETUP TEST SUITES-->
 							<suiteXmlFiles>
-								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteCycIntf.xml</suiteXmlFile>
+								<suiteXmlFile>${project.build.testOutputDirectory}/TestSuiteLnIntf.xml</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
 					</plugin>

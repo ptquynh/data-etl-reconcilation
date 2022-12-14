@@ -30,10 +30,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, LN_CODE From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_CODE FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -57,10 +57,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, LN_NM From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_NAME FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -84,10 +84,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, LN_TP From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, LANE_TYPE FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -111,10 +111,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, LN_STT From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, STATUS FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -138,10 +138,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, TOLL_ID From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, TOLL_ID FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -165,10 +165,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, PCS_DT From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, TO_CHAR(to_date(CURRENT_DATE),'yyyy-mm-dd') AS PCS_DT FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -192,10 +192,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, SUBSTR(PPN_TMS,0,4) AS PPN_TMS_EXTRACT From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, REGEXP_SUBSTR(((SYSDATE - TO_DATE('1970-01-01', 'yyyy-MM-dd')) * (24 * 60 * 60 * 1000)),'^[0-9,]{4}') AS PPN_TMS_EXTRACT FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -219,10 +219,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, CRN_ROW_IND From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, '1' AS CRN_ROW_IND FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -246,10 +246,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, SUBSTR(EFF_FM_TMS,0,10) AS EFF_FM_TMS_EXTRACT From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, TO_CHAR(CURRENT_DATE,'YYYY-MM-DD') AS EFF_FM_TMS_EXTRACT FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -273,10 +273,10 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		*/
 			String targetQuery="Select UNQ_ID_IN_SRC_STM, SUBSTR(EFF_TO_TMS,0,10) AS EFF_TO_TMS_EXTRACT From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,392,393,394,395,396,398,391) AND eff_to_tms = '2400-01-01 23:59:59'";
 			String sourceQuery="SELECT TOLL_LANE_ID, '2400-01-01' AS EFF_FM_TMS_EXTRACT FROM TOLL_LANE WHERE TOLL_LANE_ID IN (390,392,393,394,395,396,398,391) ";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
-			List<Object> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
-			List<Object> diffSrcInTarg=Utils.getDiffList(srcList,targList);
-			List<Object> diffTargInSrc=Utils.getDiffList(targList,srcList);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> srcList=DatabaseUtils.getColumnValues(sourceQuery,srcConn);
+			List<String> diffSrcInTarg=Utils.getDiffList(srcList,targList);
+			List<String> diffTargInSrc=Utils.getDiffList(targList,srcList);
 			Utils.verify(diffSrcInTarg,"Not found in Source List");
 			Utils.verify(diffTargInSrc,"Not found in Target List");
 		}
@@ -299,7 +299,7 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 		* Expected Results: Exits history record with SCD type 2
 		*/
 			String targetQuery="Select * From LN_INTF where UNQ_ID_IN_SRC_STM IN (390,395,396,391) AND eff_to_tms <> '2400-01-01 23:59:59'";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 
@@ -322,7 +322,7 @@ public class TestLnIntfUpdateDelete extends TestConfig {
 Update fields: IRGLR_CODE, IRGLR_NM to null
 		*/
 			String targetQuery="Select * From LN_INTF where UNQ_ID_IN_SRC_STM IN (389,398)";
-			List<Object> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
+			List<String> targList=DatabaseUtils.getColumnValues(targetQuery,tagConn);
 			Utils.verify(targList,"Not return 0 values");
 		}
 		

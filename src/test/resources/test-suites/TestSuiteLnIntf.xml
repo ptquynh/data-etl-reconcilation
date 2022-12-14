@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="TestLnIntfInit">
+<suite parallel="false" name="TestLnIntfUpdateDelete">
   <test name="Test">
     <classes>
       <class name="com.etl.test.testconfig.TestConfig"/>
-      <class name="com.etl.test.testscripts.TestLnIntfInit"/>
+      <class name="com.etl.test.testscripts.TestLnIntfUpdateDelete"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

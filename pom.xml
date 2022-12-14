@@ -198,7 +198,7 @@
 								<!--setup the excel file where you store test cases-->
 								<argument>input-excel-file/test-cases/TC_VETC_OPS_LN_INTF.xlsx</argument>
 								<!--setup sheet index in the excel file-->
-								<argument>0</argument>
+								<argument>1</argument>
 							</arguments>
 						</configuration>
 					</plugin>

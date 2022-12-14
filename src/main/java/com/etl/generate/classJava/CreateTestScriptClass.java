@@ -27,7 +27,7 @@ public class CreateTestScriptClass {
 		String indexSheet=args[1];
 		String testConfigName="TestConfig";
 		
-		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,0);
+		ExcelToObjectMapper mapper = new ExcelToObjectMapper(excelFile,Integer.valueOf(indexSheet));
 		List<TestCaseModel> testcases= mapper.map(TestCaseModel.class);
 		String packageName = "com.etl.test.testscripts";
 		String sheetName=mapper.getSheetName(Integer.valueOf(indexSheet));

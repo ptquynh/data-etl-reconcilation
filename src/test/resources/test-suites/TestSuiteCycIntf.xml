@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="TestCycIntfInit">
+<suite parallel="false" name="TestCycIntfUpdateDelete">
   <test name="Test">
     <classes>
       <class name="com.etl.test.testconfig.TestConfig"/>
-      <class name="com.etl.test.testscripts.TestCycIntfInit"/>
+      <class name="com.etl.test.testscripts.TestCycIntfUpdateDelete"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
